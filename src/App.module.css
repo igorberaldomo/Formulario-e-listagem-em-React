@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+h2{
+    margin:5px auto;
+}
+table{
+    width: 500px;
+    height: auto;
+    margin: 5px auto;
+    border: 2px solid;
+    border-collapse: collapse;
+}
+thead{
+    background-color: forestgreen;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+thead tr:hover{
+    background-color: forestgreen;
+}
+td, tr{
+    border: 1px solid;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover{
+    background-color: darkorange;
+}
+td{
+    padding: 5px;
+}
+.box{
+    width: 500px;
+    margin: 5px auto;
+    padding: 3px;
+    border: 2px solid black;
+}
+.input{
+    margin: 5px ;
+}
+.textAlign{
+    text-align: right;
+}
