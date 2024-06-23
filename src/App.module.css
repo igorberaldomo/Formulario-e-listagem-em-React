@@ -6,33 +6,40 @@ body{
 h2{
     margin:5px auto;
 }
-table{
+.tableForm{
+    width: 100%;
+}
+.table{
     width: 500px;
     height: auto;
     margin: 5px auto;
     border: 2px solid;
     border-collapse: collapse;
 }
-thead{
+.thead{
     background-color: forestgreen;
     color: white;
     font-weight: bold;
     border: 1px solid black;
 }
-thead tr:hover{
+.thead tr:hover{
     background-color: forestgreen;
 }
-td, tr{
+.tr{
     border: 1px solid;
 }
-tr:nth-child(even) {
+.tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-tr:hover{
+.tr:hover{
     background-color: darkorange;
 }
-td{
+.td{
     padding: 5px;
+    border: 1px solid;
+}
+.tdButton{
+    text-align: center;
 }
 .box{
     width: 500px;
@@ -44,5 +51,7 @@ td{
     margin: 5px ;
 }
 .textAlign{
+    border: 1px solid;
     text-align: right;
+    padding: 5px;
 }

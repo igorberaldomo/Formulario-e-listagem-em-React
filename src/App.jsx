@@ -11,45 +11,59 @@ function App() {
   ]
   const [produtos, setProdutos] = useState(listaInicial)
   const [produto, setProduto] = useState({ nome: "", descricao: "", preco: 0, disponivel: false })
-
   return (
     <div>
       <div className={styles.container}>
         <div className={styles.box}>
-        <form onSubmit={(event) => event.preventDefault()}>
-          <h2>Cadastre o produto</h2>
-
-            <div>
-              <label htmlFor="name">Nome do produto: </label>
-              <input className={styles.input} type="text" id="name" value={produto.nome} onChange={(event) => setProduto({ ...produto, nome: event.target.value })} />
-            </div>
-            <div>
-              <label htmlFor="descrição">Descrição do produto: </label>
-              <input className={styles.input} type="text" id="descrição" value={produto.descricao} onChange={(event) => setProduto({ ...produto, descricao: event.target.value })} />
-            </div>
-            <div>
-              <label htmlFor="custo">Custo: </label>
-              <input className={styles.input} type="number" id="custo" value={produto.preco} onChange={(event) => setProduto({ ...produto, preco: event.target.value })} />
-            </div>
-            <div>
-              <label htmlFor="disponivel">Tem no estoque: </label>
-              <input className={styles.input} type="checkbox" name="disponivel" id="disponivel" value={produto.disponivel} onChange={(event) => setProduto({ ...produto, disponivel: event.target.checked })} />
-            </div>
-            <button onClick={(event) => {
-              let ps = [...produtos, produto]
-              ps.sort((a, b) => a.preco - b.preco)
-              setProdutos(ps)
-            }
-            }>Cadastrar Produto</button>
+          <form onSubmit={(event) => event.preventDefault()}>
+            <table className={styles.tableForm}>
+              <thead><tr><td colSpan={2}><h2>Cadastre o produto</h2></td></tr></thead>
+              <tbody>
+                <tr>
+                  <td><label htmlFor="name">Nome do produto: </label></td>
+                  <td><input className={styles.input} type="text" id="name" value={produto.nome} onChange={(event) => setProduto({ ...produto, nome: event.target.value })} /></td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="descrição">Descrição do produto: </label></td>
+                  <td><input className={styles.input} type="text" id="descrição" value={produto.descricao} onChange={(event) => setProduto({ ...produto, descricao: event.target.value })} /></td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="custo">Custo: </label></td>
+                  <td><input className={styles.input} type="number" id="custo" value={produto.preco} onChange={(event) => setProduto({ ...produto, preco: event.target.value })} /></td>
+                </tr>
+                <tr>
+                  <td><label htmlFor="disponivel">Tem estoque: </label></td>
+                  <td><input className={styles.input} type="checkbox" name="disponivel" id="disponivel" value={produto.disponivel} onChange={(event) => setProduto({ ...produto, disponivel: event.target.checked })} /></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={2} className={styles.tdButton}>
+                    <button onClick={(event) => {
+                      let ps = [...produtos, produto]
+                      ps.sort((a, b) => a.preco - b.preco)
+                      setProdutos(ps)
+                    }
+                    }>Cadastrar Produto</button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </form>
         </div>
         <div className={styles.box}>
           <h2>Veja o resultado</h2>
           <table className={styles.table}>
-            <thead><tr><td>Nome</td><td className={styles.textAlign}> Preço</td></tr></thead>
+            <thead className={styles.thead}>
+              <tr className={styles.tr}>
+                <td className={styles.td}>Nome</td><td className={styles.textAlign}> Preço</td></tr></thead>
             <tbody>
               {produtos.map((produto, index) => {
-                return (<tr key={index}><td>{produto.nome}</td><td className={styles.textAlign}>R$:{produto.preco}</td></tr>)
+                return (
+                  <tr key={index} className={styles.tr}>
+                    <td className={styles.td}>{produto.nome}</td>
+                    <td className={styles.textAlign}>R$ {Number(produto.preco).toLocaleString(undefined,{minimumFractionDigits: 2})}</td>
+                  </tr>)
               })}
             </tbody>
           </table>
